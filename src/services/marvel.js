@@ -11,5 +11,16 @@ export async function getMarvelCharacters(callback, page) {
             offset: offset
         }
     });
-    callback(d.data.data.results);
+    callback(d.data.data.results, d.data.data.total);
+}
+
+export async function searchMarvelCharacters(callback, page, searchTerm) {
+    var offset = (page - 1) * 20;
+    const d = await axios.get(API_ENDPOINT, {
+        params: {
+            nameStartsWith: searchTerm,
+            offset: offset
+        }
+    });
+    callback(d.data.data.results, d.data.data.total);
 }

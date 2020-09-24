@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MarvelCharacters from './MarvelCharacters.vue'
+import MarvelCharacters from '../components/MarvelCharacters.vue'
 
 export default {
   name: 'Home',

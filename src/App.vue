@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <Home></Home>
+    <p>Hello app!</p>
+    <p>
+    <router-link to="/">Home</router-link>
+    <router-link to="/search">Search</router-link>
+    </p>
+    <router-view></router-view>
+    <a href="http://marvel.com">Data provided by Marvel. © 2020 MARVEL</a>
   </div>
 </template>
 
 <script>
-import Home from './components/Home.vue'
-
 export default {
-  name: 'App',
-  components: {
-    Home
-  }
+  name: 'App'
 }
 </script>
 
