@@ -1,16 +1,18 @@
 <template>
     <div>
-        <p>Total Results: {{ totalAvailable }}</p>
-        <ul id="character-listing">
-            <li v-for="character in characters" :key="character.id" v-on:click="selectedCharacter = character">
-                {{ character.name }}
-            </li>
-        </ul>
-        <CharacterDetail v-bind:character="selectedCharacter"></CharacterDetail>
-        <div id="pageButtons" v-if="totalAvailable > 20">
-            <button v-on:click="changePage(-1)">Previous Page</button>
-            <button v-on:click="changePage(1)">Next Page</button>
+        <div id="listing-container">
+            <p>Total Results: {{ totalAvailable }}</p>
+            <div id="character-listing">
+                <div class="character-name" v-for="character in characters" :key="character.id" v-on:click="selectedCharacter = character">
+                    {{ character.name }}
+                </div>
+            </div>
+            <div id="pageButtons" v-if="totalAvailable > 20">
+                <button class="btn btn-primary" v-on:click="changePage(-1)" :disabled="page <= 1">Previous Page</button>
+                <button v-on:click="changePage(1)">Next Page</button>
+            </div>
         </div>
+        <CharacterDetail id="character-detail" v-bind:character="selectedCharacter"></CharacterDetail>
     </div>
 </template>
 
@@ -18,6 +20,7 @@
 import {searchMarvelCharacters} from '../services/marvel'
 import {getMarvelCharacters} from '../services/marvel'
 import CharacterDetail from './CharacterDetail.vue'
+import 'bootstrap';
 
 export default {
     name: 'MarvelCharacters',
@@ -63,3 +66,37 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+#character-detail {
+    float: left;
+    border: 2px solid black;
+    border-radius: 5%;
+    padding: 5px;
+    background: lightgray;
+    width: 30%;
+}
+
+#listing-container {
+    float: left;
+    width: 40%
+}
+
+.character-name {
+    background: lightblue;
+    margin-bottom: 5px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    width: fit-content;
+    padding: 3px;
+    font-size: medium;
+    border: 1px dotted gray;
+}
+
+.character-name:hover {
+    background: blue;
+    color: white;
+    border: 1px solid black;
+}
+</style>
