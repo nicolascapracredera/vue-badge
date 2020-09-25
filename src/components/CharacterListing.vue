@@ -3,16 +3,37 @@
         <div id="listing-container">
             <p>Total Results: {{ totalAvailable }}</p>
             <div id="character-listing">
-                <div class="character-name" v-for="character in characters" :key="character.id" v-on:click="selectedCharacter = character">
-                    {{ character.name }}
+                <div class="btn-col">
+                    <button class="btn btn-outline-primary character-name" v-for="character in characters.slice(0, 10)" :key="character.id" v-on:click="selectedCharacter = character">
+                        {{ character.name }}
+                    </button>
                 </div>
+                <div class="btn-col">
+                    <button class="btn btn-outline-primary character-name" v-for="character in characters.slice(10, 20)" :key="character.id" v-on:click="selectedCharacter = character">
+                        {{ character.name }}
+                    </button>
+                </div>
+                <div id="button-container" class="btn-group" v-if="totalAvailable > 20">
+                <ul class="pagination justify-content-center">
+                    <li :class="'page-item ' + [page <= 1 && 'disabled']">
+                        <button class="page-link" v-on:click="changePage(-1)" :disabled="page <= 1" aria-disabled="true">
+                            <span aria-hidden="true">&laquo;</span>
+                        </button>
+                    </li>
+                    <li class="page-item disabled">
+                        <button disabled class="page-link">{{ page }}</button>
+                    </li>
+                    <li class="page-item">
+                        <button class="page-link" v-on:click="changePage(1)">
+                            <span aria-hidden="true">&raquo;</span>
+                        </button>
+                    </li>
+                </ul>
             </div>
-            <div id="pageButtons" v-if="totalAvailable > 20">
-                <button class="btn btn-primary" v-on:click="changePage(-1)" :disabled="page <= 1">Previous Page</button>
-                <button v-on:click="changePage(1)">Next Page</button>
             </div>
+            
         </div>
-        <CharacterDetail id="character-detail" v-bind:character="selectedCharacter"></CharacterDetail>
+        <CharacterDetail v-bind:character="selectedCharacter"></CharacterDetail>
     </div>
 </template>
 
@@ -20,10 +41,9 @@
 import {searchMarvelCharacters} from '../services/marvel'
 import {getMarvelCharacters} from '../services/marvel'
 import CharacterDetail from './CharacterDetail.vue'
-import 'bootstrap';
 
 export default {
-    name: 'MarvelCharacters',
+    name: 'CharacterListing',
     props: [ 'searchTerm' ],
     components: {
         CharacterDetail
@@ -44,7 +64,6 @@ export default {
     },
     methods: {
         getCharacters: function(page) {
-            console.log("current search term ", this.searchTerm)
             if (this.searchTerm !== "") {
                 searchMarvelCharacters(this.updateCharacters, page, this.searchTerm);
             } else {
@@ -68,35 +87,28 @@ export default {
 </script>
 
 <style scoped>
-#character-detail {
-    float: left;
-    border: 2px solid black;
-    border-radius: 5%;
-    padding: 5px;
-    background: lightgray;
-    width: 30%;
-}
-
 #listing-container {
     float: left;
-    width: 40%
+    width: 60%;
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .character-name {
-    background: lightblue;
     margin-bottom: 5px;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    width: fit-content;
-    padding: 3px;
-    font-size: medium;
-    border: 1px dotted gray;
+    margin-right: 5px;
+    height: 60px;
 }
 
-.character-name:hover {
-    background: blue;
-    color: white;
-    border: 1px solid black;
+.btn-col {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+
+#button-container {
+    display: block;
+    clear: both;
 }
 </style>

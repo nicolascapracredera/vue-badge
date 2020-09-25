@@ -1,43 +1,50 @@
 <template>
   <div id="app">
-    <h1>Marvel Character Lookup</h1>
-    <p id="navigation">
-      <router-link class="nav-option" to="/">Home</router-link>
-      <router-link class="nav-option" to="/search">Search for Characters</router-link>
-    </p>
-    <router-view></router-view>
-    <div id="footer">
-      <a href="http://marvel.com">Data provided by Marvel. © 2020 MARVEL</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Marvel Character Lookup</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li :class="'nav-item ' + [currentPage === '/' && 'active']">
+            <router-link class="nav-link" to="/">Home</router-link>
+          </li>
+          <li :class="'nav-item ' + [currentPage === '/search' && 'active']">
+            <router-link class="nav-link" to="/search">Search for Characters</router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div id="content">
+      <router-view></router-view>
+      <div id="footer">
+        <a href="http://marvel.com">Data provided by Marvel. © 2020 MARVEL</a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default {
-  name: 'App'
+  name: 'App',
+  computed: {
+    currentPage() {
+      return this.$route.path;
+    },
+  },
 }
 </script>
 
-<style>
-.nav-option {
-  margin-right: 5px;
-  background: green;
-  padding: 3px;
-  border-radius: 5%;
-  border: 1px solid black;
-  text-decoration: none;
-  color: black;
-  font-size: large;
-  font-weight: bold;
-}
-
-.nav-option:hover {
-  background: darkgreen;
-  color: white;
-}
-
+<style scoped>
 #footer {
   clear: both;
-  margin-top: 40%;
+  margin-top: 4%;
+}
+
+#content {
+  margin-left: 5px;
 }
 </style>

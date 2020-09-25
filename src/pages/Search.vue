@@ -1,8 +1,7 @@
 <template>
-    <div>
-        <h2>Search for a Character</h2>
+    <div id="container">
         <p>Start typing in the box below to search for a Marvel character. Click on a character's name to view details about them.</p>
-        <input id="search-box" v-model="characterSearch" placeholder="Type Character Name">
+        <input class="form-control col-4" type="text" v-model="characterSearch" placeholder="Type Character Name">
         <CharacterListing :searchTerm="debouncedSearchTerm"></CharacterListing>
     </div>
 </template>
@@ -38,7 +37,8 @@ export default {
 </script>
 
 <style scoped>
-#search-box {
-    width: 15%;
+#container {
+    margin-left: 5px;
+    margin-top: 5px;
 }
 </style>
