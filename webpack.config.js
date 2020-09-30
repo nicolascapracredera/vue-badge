@@ -1,5 +1,5 @@
 // webpack.config.js
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   mode: 'development',
@@ -30,4 +30,4 @@ module.exports = {
     // make sure to include the plugin for the magic
     new VueLoaderPlugin()
   ]
-}
+};

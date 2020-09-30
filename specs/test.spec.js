@@ -55,7 +55,7 @@ test('character detail numbers', () => {
     expect(wrapper.text()).toContain("Appears in 7 comics, 234 series, and 543 stories.");
 });
 
-test('search wrapper check', async () => {
+test('search wrapper check', () => {
     const searchWrapper = mount(Search);
 
     expect(searchWrapper.html()).toMatchSnapshot();
