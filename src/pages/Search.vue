@@ -9,7 +9,6 @@
 <script>
 const _ = require('lodash');
 import CharacterListing from '../components/CharacterListing.vue'
-require('bootstrap')
 
 export default {
     name: 'Search',

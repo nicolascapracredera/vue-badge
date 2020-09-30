@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`character detail numbers 1`] = `
+"<div>
+  <h3>Detailed Character Info</h3>
+  <div class=\\"card\\" style=\\"width: 18rem;\\"><img alt=\\"Character Photo\\" src=\\"http://test-path-for-image.com/portrait_incredible.jpg\\" class=\\"card-img-top\\">
+    <div class=\\"card-body\\">
+      <p>Name: Test Name</p>
+      <p>Appears in 7 comics, 234 series, and 543 stories.</p>
+      <p>Test Name was last modified on Invalid Date</p>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`character detail zeros 1`] = `
+"<div>
+  <h3>Detailed Character Info</h3>
+  <div class=\\"card\\" style=\\"width: 18rem;\\"><img alt=\\"Character Photo\\" src=\\"http://test-path-for-image.com/portrait_incredible.jpg\\" class=\\"card-img-top\\">
+    <div class=\\"card-body\\">
+      <p>Name: Test Name</p>
+      <p>Appears in 0 comics, 0 series, and 0 stories.</p>
+      <p>Test Name was last modified on Invalid Date</p>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`character listing button check 1`] = `
+"<div>
+  <div id=\\"listing-container\\">
+    <p>Total Results: 0</p>
+    <div id=\\"character-listing\\">
+      <div class=\\"btn-col\\"><button class=\\"btn btn-outline-primary character-name\\">
+          Test Name 1
+        </button><button class=\\"btn btn-outline-primary character-name\\">
+          Test Name 2
+        </button></div>
+      <div class=\\"btn-col\\"></div>
+      <!---->
+    </div>
+  </div>
+  <div>
+    <h3>Detailed Character Info</h3>
+    <div class=\\"card\\" style=\\"width: 18rem;\\"><img alt=\\"Character Photo\\" src=\\"http://test-path-for-image.com/portrait_incredible.jpg\\" class=\\"card-img-top\\">
+      <div class=\\"card-body\\">
+        <p>Name: Test Name 1</p>
+        <p>Appears in 0 comics, 0 series, and 0 stories.</p>
+        <p>Test Name 1 was last modified on Invalid Date</p>
+      </div>
+    </div>
+  </div>
+</div>"
+`;
+
+exports[`search wrapper check 1`] = `
+"<div id=\\"container\\">
+  <p>Start typing in the box below to search for a Marvel character. Click on a character's name to view details about them.</p> <input type=\\"text\\" placeholder=\\"Type Character Name\\" class=\\"form-control col-4\\">
+  <div>
+    <div id=\\"listing-container\\">
+      <p>Total Results: 0</p>
+      <div id=\\"character-listing\\">
+        <div class=\\"btn-col\\"></div>
+        <div class=\\"btn-col\\"></div>
+        <!---->
+      </div>
+    </div>
+    <!---->
+  </div>
+</div>"
+`;

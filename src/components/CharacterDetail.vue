@@ -16,7 +16,11 @@
 <script>
 export default {
     name: 'CharacterDetail',
-    props: [ 'character' ],
+    props: {
+        character: {
+            type: Object
+        }
+    },
     data: function() {
         return {
             
